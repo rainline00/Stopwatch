@@ -18,15 +18,15 @@ class Application(tk.Frame):
         self.canvas = tk.Canvas(master,width=290,height=80,bg="skyblue")
         self.canvas.place(x=3,y=10)
 
-        tk.Button(master,text="リセット",command=self.resetButtonClick,width=10).place(x=10, y=110)
-        tk.Button(master,text="スタート",command=self.startButtonClick,width=10).place(x=110, y=110)
-        tk.Button(master,text="ストップ",command=self.stopButtonClick,width=10).place(x=210, y=110)
+        tk.Button(master,text="Reset",command=self.resetButtonClick,width=10).place(x=10, y=110)
+        tk.Button(master,text="Start",command=self.startButtonClick,width=10).place(x=110, y=110)
+        tk.Button(master,text="Stop",command=self.stopButtonClick,width=10).place(x=210, y=110)
 
         master.after(50, self.update)
 
     def startButtonClick(self):
         if not self.playTime:
-            self.startTime=time.time()-self.elapsedTime
+        self.startTime=time.time()-self.elapsedTime
             self.playTime=True
 
     def stopButtonClick(self):
@@ -44,9 +44,9 @@ class Application(tk.Frame):
         self.canvas.delete("Time")
         if self.playTime:
             self.elapsedTime=time.time()-self.startTime
-            self.canvas.create_text(280,40,text=round(self.elapsedTime,2),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
+            self.canvas.create_text(280,40,text="{:.3g}".format(self.elapsedTime),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
         else:
-            self.canvas.create_text(280,40,text=round(self.stopTime,2),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
+            self.canvas.create_text(280,40,text="{:.3g}".format(self.stopTime),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
 
         self.master.after(50,self.update)
 
