@@ -1,6 +1,5 @@
 import tkinter as tk
 import time
-aaaaa
 
 class Application(tk.Frame):
     def __init__(self, master):
