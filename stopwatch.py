@@ -26,7 +26,7 @@ class Application(tk.Frame):
 
     def startButtonClick(self):
         if not self.playTime:
-        self.startTime=time.time()-self.elapsedTime
+            self.startTime=time.time()-self.elapsedTime
             self.playTime=True
 
     def stopButtonClick(self):
@@ -44,9 +44,9 @@ class Application(tk.Frame):
         self.canvas.delete("Time")
         if self.playTime:
             self.elapsedTime=time.time()-self.startTime
-            self.canvas.create_text(280,40,text="{:.3g}".format(self.elapsedTime),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
+            self.canvas.create_text(280,40,text=round(self.elapsedTime, 1),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
         else:
-            self.canvas.create_text(280,40,text="{:.3g}".format(self.stopTime),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
+            self.canvas.create_text(280,40,text=round(self.stopTime, 1),font=("Helvetica",40,"bold"),fill="black",tag="Time",anchor="e")
 
         self.master.after(50,self.update)
 
